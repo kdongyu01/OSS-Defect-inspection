@@ -21,3 +21,14 @@ Remove-Item Env:GH_TOKEN
 ```
 
 필요한 권한은 저장소 Issues·Metadata 쓰기와 Projects 쓰기입니다. 실제 토큰 권한과 GitHub 계정 정책은 실행 전에 GitHub 설정 화면에서 확인합니다.
+
+## DORA Workflow 수동 실행
+
+GitHub 저장소의 `Actions` 탭에서 `Generate DORA weekly report`를 선택한 뒤
+`Run workflow`를 누르면 최근 7일 데이터를 수집합니다. Workflow는
+`metrics/dora.json`과 `metrics/weekly-report.md`를 Artifact로 업로드하고,
+저장소에도 결과 파일을 커밋합니다.
+
+아직 Pull Request, production 배포, `incident` Issue가 없으면 해당 지표는
+표본 수 0 또는 `null`로 표시됩니다. 이 값은 성과가 아니라 측정 데이터가
+아직 없는 상태를 뜻합니다.

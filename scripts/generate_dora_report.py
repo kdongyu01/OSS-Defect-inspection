@@ -22,7 +22,12 @@ def parse_time(value: str | None) -> datetime | None:
 
 def request_json(path: str) -> list | dict:
     token = os.environ.get("GH_TOKEN")
-    repository = os.environ["GITHUB_REPOSITORY"]
+    repository = os.environ.get("GITHUB_REPOSITORY")
+    if not token:
+        raise RuntimeError("GH_TOKEN is required to collect DORA metrics")
+    if not repository:
+        raise RuntimeError("GITHUB_REPOSITORY is required to collect DORA metrics")
+
     request = Request(
         f"{API_ROOT}/repos/{repository}/{path}",
         headers={
@@ -67,7 +72,9 @@ def collect_report() -> dict:
         created_at = parse_time(deployment.get("created_at"))
         if not created_at or not start <= created_at <= end:
             continue
-        statuses = request_json(f"deployments/{deployment['id']}/statuses?per_page=10")
+        statuses = request_json(
+            f"deployments/{deployment['id']}/statuses?per_page=10"
+        )
         latest = statuses[0].get("state") if statuses else "unknown"
         if latest == "success":
             successful_deployments += 1
@@ -140,7 +147,10 @@ def render_markdown(report: dict) -> str:
 def main() -> None:
     REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
     report = collect_report()
-    REPORT_PATH.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    REPORT_PATH.write_text(
+        json.dumps(report, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
     MARKDOWN_PATH.write_text(render_markdown(report), encoding="utf-8")
 
 
