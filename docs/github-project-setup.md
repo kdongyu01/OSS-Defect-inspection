@@ -52,3 +52,27 @@
 | DORA Lead Time Workflow 구현 | Feature | Medium | 5 | MVP Foundation |
 | 주간 DORA JSON 리포트 생성 | Feature | Medium | 5 | Demo Release |
 | Render 배포 및 모바일 점검 | Chore | High | 3 | Demo Release |
+
+## 선택 과제 분석 입력
+
+Project의 상태 변경 이력을 다음 파일에 내보내면 로컬 분석 스크립트가 세 가지 지표를 계산합니다.
+
+```text
+metrics/project_events.csv
+metrics/sprint_items.csv
+```
+
+예시 파일을 복사한 뒤 실제 이벤트와 Story Points로 바꿉니다.
+
+```powershell
+Copy-Item metrics/project_events.example.csv metrics/project_events.csv
+Copy-Item metrics/sprint_items.example.csv metrics/sprint_items.csv
+python scripts/analyze_project_metrics.py
+```
+
+생성 결과:
+
+- `metrics/cycle-time.csv`: In Progress부터 Done까지의 시간
+- `metrics/velocity.csv`: Sprint별 완료 Story Points
+- `metrics/burndown.csv`: 날짜별 남은 Story Points
+- `metrics/project-metrics.json`: 세 지표 통합 결과
