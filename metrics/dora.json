@@ -4,8 +4,8 @@
     "end": "2026-10-14"
   },
   "lead_time_hours": {
-    "average": null,
-    "sample_count": 0,
+    "average": 0.13,
+    "sample_count": 1,
     "definition": "Pull Request created_at to merged_at proxy"
   },
   "deployment_frequency": {

@@ -4,7 +4,7 @@
 
 | 지표 | 결과 |
 |---|---:|
-| Lead Time | None hours |
+| Lead Time | 0.13 hours |
 | Deployment Frequency | 0 successful deployments |
 | MTTR | None hours |
 | Change Failure Rate | None% |
