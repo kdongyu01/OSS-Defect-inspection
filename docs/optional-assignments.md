@@ -13,9 +13,10 @@
 
 ## 1. GitHub Profile README
 
-공개용 내용은 [profile/README.md](../profile/README.md)에 작성되어 있다.
-GitHub 사용자명과 동일한 공개 저장소가 현재 존재하지 않아, 계정 외부 공개
-단계만 남아 있다.
+공개용 내용은 [profile/README.md](../profile/README.md)에 작성되어 있으며,
+GitHub 사용자명과 동일한 저장소
+[`kdongyu01/kdongyu01`](https://github.com/kdongyu01/kdongyu01)의 `README.md`로
+Push되어 있다.
 
 ## 2. DORA JSON 및 주간 보고서
 
