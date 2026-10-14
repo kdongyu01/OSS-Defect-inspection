@@ -395,3 +395,19 @@ non-fast-forward 충돌이 발생한 것이 원인이었다.
 - Profile 저장소 `kdongyu01/kdongyu01`는 아직 존재하지 않아 공개 Push는
   수행할 수 없었음
 - 실제 Project 상태 이력과 Profile 저장소 생성은 GitHub 계정 영역에 남음
+
+## 16. 미완료 자동화의 실제 재검증
+
+이번 Push가 DORA Workflow의 `push` 트리거를 실행했다.
+
+실행 결과:
+
+- Run: [Generate DORA weekly report #2](https://github.com/kdongyu01/OSS-Defect-inspection/actions/runs/38650728556)
+- 전체 Job: 성공
+- DORA report 생성: 성공
+- JSON·Markdown Artifact 업로드: 성공
+- 리포트 커밋: 성공
+
+따라서 DORA 선택 과제는 자동 실행과 재실행 검증까지 완료되었다. 현재
+지표가 `null` 또는 `0`인 것은 최근 7일에 측정 대상 Pull Request, production
+배포, incident가 없기 때문이다.

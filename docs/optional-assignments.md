@@ -8,7 +8,7 @@
 | 선택 과제 | 현재 상태 | 근거 |
 |---|---|---|
 | GitHub Profile README | 공개용 파일 완료, Profile 저장소 생성 대기 | `profile/README.md` |
-| DORA JSON·주간 보고서 | 구현 및 첫 실행 성공 | `metrics/dora.json`, `metrics/weekly-report.md`, Actions Artifact |
+| DORA JSON·주간 보고서 | 구현 및 수정 Workflow 재실행 성공 | `metrics/dora.json`, `metrics/weekly-report.md`, Actions Artifact |
 | Cycle Time·Velocity·Burndown | 계산 로직 실행 검증 완료, 실제 Project 이력 대기 | `scripts/analyze_project_metrics.py`, 예시 결과 JSON |
 
 ## 1. GitHub Profile README
@@ -67,7 +67,7 @@ python scripts/analyze_project_metrics.py
 - [x] Chart.js 대시보드 구현
 - [x] 분석 스크립트와 예시 실행 결과 작성
 - [ ] Profile 전용 저장소에 README 공개
-- [ ] 수정된 DORA Workflow 재실행 성공 확인
+- [x] 수정된 DORA Workflow 재실행 성공 확인
 - [ ] 실제 Project 이벤트로 Cycle Time·Velocity·Burndown 재계산
 - [ ] Project 화면에서 5개 상태와 Custom Field 최종 확인
 
