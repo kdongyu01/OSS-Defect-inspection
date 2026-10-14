@@ -111,7 +111,16 @@ def graphql(query: str, variables: dict) -> dict:
     result = request("/graphql", "POST", {"query": query, "variables": variables})
     if result.get("errors"):
         errors = json.dumps(result["errors"], ensure_ascii=False)
-        if any(error.get("type") == "FORBIDDEN" for error in result["errors"]):
+        error_types = {error.get("type") for error in result["errors"]}
+        if "INSUFFICIENT_SCOPES" in error_types:
+            raise SystemExit(
+                "현재 토큰에 Project API 권한이 없습니다. "
+                "classic PAT를 사용하는 경우 Settings > Developer settings > "
+                "Personal access tokens에서 project와 read:project scope를 추가하거나 "
+                "해당 scope로 새 토큰을 발급한 뒤 다시 실행하세요. "
+                f"GitHub 응답: {errors}"
+            )
+        if "FORBIDDEN" in error_types:
             raise SystemExit(
                 "Project 생성 권한이 없습니다. "
                 "토큰의 사용자 Projects 권한을 Read and write로 설정하거나 "
