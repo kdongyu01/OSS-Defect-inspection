@@ -110,7 +110,15 @@ def create_issue(title: str, labels: str, points: int, milestone: int) -> str:
 def graphql(query: str, variables: dict) -> dict:
     result = request("/graphql", "POST", {"query": query, "variables": variables})
     if result.get("errors"):
-        raise RuntimeError(json.dumps(result["errors"], ensure_ascii=False))
+        errors = json.dumps(result["errors"], ensure_ascii=False)
+        if any(error.get("type") == "FORBIDDEN" for error in result["errors"]):
+            raise SystemExit(
+                "Project 생성 권한이 없습니다. "
+                "토큰의 사용자 Projects 권한을 Read and write로 설정하거나 "
+                "classic PAT의 project scope를 추가한 뒤 다시 실행하세요. "
+                f"GitHub 응답: {errors}"
+            )
+        raise RuntimeError(errors)
     return result["data"]
 
 
