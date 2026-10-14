@@ -1,0 +1,12 @@
+{
+  "cycle_time": [],
+  "velocity": [],
+  "burndown": [
+    {
+      "date": "2026-10-14",
+      "total_points": 0,
+      "done_points": 0,
+      "remaining_points": 0
+    }
+  ]
+}
