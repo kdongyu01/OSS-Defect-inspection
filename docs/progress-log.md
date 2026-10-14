@@ -344,3 +344,34 @@ non-fast-forward 충돌이 발생한 것이 원인이었다.
 | 커밋 | 내용 |
 |---|---|
 | 최신 | 주차별 현황과 DORA 대시보드 표시 개선 |
+
+## 14. 선택 과제 3개 검토 및 보완
+
+2026-10-15 07:49 기준 선택 과제를 다시 확인했다.
+
+### 선택 과제 1: GitHub Profile README
+
+- 학습 목표와 관심 분야를 `github-profile-readme-draft.md`에 작성 완료
+- 사용자명과 같은 Profile 전용 저장소는 아직 생성되지 않아 공개 완료로
+  표시하지 않음
+- 공개 절차와 현재 상태를 `docs/optional-assignments.md`에 기록
+
+### 선택 과제 2: DORA JSON·주간 보고서
+
+- `metrics/dora.json`과 `metrics/weekly-report.md`가 실제 첫 Workflow
+  실행으로 생성됨
+- Artifact 업로드 성공 확인
+- 현재 Pull Request·production 배포·incident 표본이 없어 `null` 또는 `0`
+  인 상태이며, 이를 성과로 해석하지 않음
+- Workflow 재실행 충돌 수정본은 원격에 Push했지만 수정 후 새 실행은 아직 없음
+
+### 선택 과제 3: Cycle Time·Velocity·Burndown
+
+- 분석 함수가 예시 CSV 입력으로 실제 실행됨
+- 결과: Cycle Time 6.0시간, Sprint 1 Velocity 2점, Burndown 잔여 3점
+- 결과를 `metrics/project-metrics.example-output.json`에 저장
+- 예시 결과임을 명시했으며, 실제 Project 상태 변경 이력으로 계산한 결과는
+  아직 아님
+
+선택 과제의 구현·검증 상태와 남은 항목은
+`docs/optional-assignments.md`에 정리했다.

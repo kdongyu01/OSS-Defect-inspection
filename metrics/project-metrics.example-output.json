@@ -1,0 +1,27 @@
+{
+  "data_source": {
+    "events": "project_events.example.csv",
+    "items": "sprint_items.example.csv",
+    "is_real_project_export": false
+  },
+  "cycle_time": [
+    {
+      "issue_number": "1",
+      "cycle_time_hours": 6.0
+    }
+  ],
+  "velocity": [
+    {
+      "sprint": "Sprint 1",
+      "completed_story_points": 2
+    }
+  ],
+  "burndown": [
+    {
+      "date": "2026-10-15",
+      "total_points": 5,
+      "done_points": 2,
+      "remaining_points": 3
+    }
+  ]
+}

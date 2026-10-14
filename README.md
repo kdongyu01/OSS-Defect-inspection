@@ -47,6 +47,12 @@
 - [x] GitHub Project 생성 및 Issue 12개 연결
 - [ ] Project 보드 상태·Custom Field 최종 설정
 
+## 선택 과제 검증
+
+선택 과제의 구현·검증 수준은 [선택 과제 검증 결과](docs/optional-assignments.md)에
+정리했습니다. 예시 데이터 결과는 실제 성과로 해석하지 않으며, 실제 Project
+이력이 입력된 뒤 다시 계산합니다.
+
 ## 주차별 진행 현황
 
 | 주차 | 핵심 과제 | 상태 | 확인 근거 |
