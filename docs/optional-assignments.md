@@ -9,7 +9,7 @@
 |---|---|---|
 | GitHub Profile README | 공개용 파일 완료, Profile 저장소 생성 대기 | `profile/README.md` |
 | DORA JSON·주간 보고서 | 구현 및 수정 Workflow 재실행 성공 | `metrics/dora.json`, `metrics/weekly-report.md`, Actions Artifact |
-| Cycle Time·Velocity·Burndown | 계산 로직 실행 검증 완료, 실제 Project 이력 대기 | `scripts/analyze_project_metrics.py`, 예시 결과 JSON |
+| Cycle Time·Velocity·Burndown | 수집·계산 자동화 완료, 실제 이력 축적 대기 | `scripts/export_project_metrics.py`, `scripts/analyze_project_metrics.py`, Project metrics Workflow |
 
 ## 1. GitHub Profile README
 
@@ -53,11 +53,14 @@ Burndown: total 5, done 2, remaining 3
 python scripts/analyze_project_metrics.py
 ```
 
-실제 GitHub Project의 상태 변경 이력을 `metrics/project_events.csv`에,
-실제 Sprint·Story Points를 `metrics/sprint_items.csv`에 입력해야 실제
-프로젝트 분석 결과가 된다. 저장소에 포함된
-`metrics/project-metrics.example-output.json`은 예시 데이터 결과이며 실제
-성과 지표가 아니다.
+`scripts/export_project_metrics.py`가 Project v2의 현재 이슈·Status·Sprint·
+Story Points를 주기적으로 스냅샷하고, `scripts/analyze_project_metrics.py`가
+세 지표를 계산한다. 실제 수집을 활성화하려면 저장소 Secret
+`PROJECTS_TOKEN`에 Project 읽기 권한과 저장소 Contents 쓰기 권한이 있는
+토큰을 등록한 뒤 `Collect GitHub Project metrics` Workflow를 수동 실행한다.
+첫 실행 전의 과거 상태 변경 이력은 GitHub API가 소급해 주지 않으므로, 실행
+이후 축적되는 데이터만 실측 결과로 사용한다. 저장소에 포함된
+`metrics/project-metrics.example-output.json`은 여전히 예시 결과다.
 
 ## 1~3주차 최종 확인 항목
 
@@ -68,7 +71,8 @@ python scripts/analyze_project_metrics.py
 - [x] 분석 스크립트와 예시 실행 결과 작성
 - [ ] Profile 전용 저장소에 README 공개
 - [x] 수정된 DORA Workflow 재실행 성공 확인
-- [ ] 실제 Project 이벤트로 Cycle Time·Velocity·Burndown 재계산
+- [x] 실제 Project 이벤트 수집·계산 Workflow 구현
+- [ ] 실제 Project 이벤트가 축적된 뒤 실측 결과 확인
 - [ ] Project 화면에서 5개 상태와 Custom Field 최종 확인
 
 ## Project 최종 설정 자동화

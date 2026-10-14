@@ -81,6 +81,13 @@ Copy-Item metrics/sprint_items.example.csv metrics/sprint_items.csv
 python scripts/analyze_project_metrics.py
 ```
 
+자동 수집을 사용하려면 저장소 Settings → Secrets and variables → Actions에
+`PROJECTS_TOKEN`을 추가한다. 토큰은 Project 읽기 권한과 저장소 Contents
+쓰기 권한을 가져야 한다. `Collect GitHub Project metrics` Workflow를
+수동 실행하거나 매주 월요일 스케줄 실행하면 현재 Project 상태가
+`project_events.csv`와 `sprint_items.csv`에 누적되고, 계산 결과가 Artifact와
+커밋으로 저장된다. Workflow 도입 이후의 스냅샷만 실측 이력으로 인정한다.
+
 기존 Project 필드 보정:
 
 ```powershell
