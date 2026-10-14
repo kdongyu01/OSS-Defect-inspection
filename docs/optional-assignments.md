@@ -7,7 +7,7 @@
 
 | 선택 과제 | 현재 상태 | 근거 |
 |---|---|---|
-| GitHub Profile README | 공개용 파일 완료, Profile 저장소 생성 대기 | `profile/README.md` |
+| GitHub Profile README | 사용자 저장소에 공개 완료 | `profile/README.md`, `kdongyu01/kdongyu01` |
 | DORA JSON·주간 보고서 | 구현 및 수정 Workflow 재실행 성공 | `metrics/dora.json`, `metrics/weekly-report.md`, Actions Artifact |
 | Cycle Time·Velocity·Burndown | 수집·계산 자동화 완료, 실제 이력 축적 대기 | `scripts/export_project_metrics.py`, `scripts/analyze_project_metrics.py`, Project metrics Workflow |
 
@@ -69,7 +69,7 @@ Story Points를 주기적으로 스냅샷하고, `scripts/analyze_project_metric
 - [x] DORA JSON·Markdown 생성 및 Artifact 업로드
 - [x] Chart.js 대시보드 구현
 - [x] 분석 스크립트와 예시 실행 결과 작성
-- [ ] Profile 전용 저장소에 README 공개
+- [x] Profile 전용 저장소에 README 공개
 - [x] 수정된 DORA Workflow 재실행 성공 확인
 - [x] 실제 Project 이벤트 수집·계산 Workflow 구현
 - [ ] 실제 Project 이벤트가 축적된 뒤 실측 결과 확인

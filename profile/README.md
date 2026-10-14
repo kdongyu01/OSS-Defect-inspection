@@ -31,5 +31,4 @@ AI와 오픈소스 기반 소프트웨어 개발을 학습하고 있습니다.
 - GitHub Actions
 - GitHub Projects
 
-> 이 파일을 GitHub 사용자명과 동일한 공개 저장소의 `README.md`로 복사하면
-> GitHub Profile README가 공개됩니다.
+이 저장소의 `README.md`는 GitHub 사용자명과 동일한 Profile README입니다.
