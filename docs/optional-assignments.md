@@ -7,16 +7,15 @@
 
 | 선택 과제 | 현재 상태 | 근거 |
 |---|---|---|
-| GitHub Profile README | 초안 완료, 공개 대기 | `github-profile-readme-draft.md` |
+| GitHub Profile README | 공개용 파일 완료, Profile 저장소 생성 대기 | `profile/README.md` |
 | DORA JSON·주간 보고서 | 구현 및 첫 실행 성공 | `metrics/dora.json`, `metrics/weekly-report.md`, Actions Artifact |
 | Cycle Time·Velocity·Burndown | 계산 로직 실행 검증 완료, 실제 Project 이력 대기 | `scripts/analyze_project_metrics.py`, 예시 결과 JSON |
 
 ## 1. GitHub Profile README
 
-내용은 [github-profile-readme-draft.md](../github-profile-readme-draft.md)에
-작성되어 있다. 공개하려면 GitHub 사용자명과 동일한 이름의 공개 저장소를
-생성하고 `README.md`로 복사해 Push해야 한다. 현재는 해당 프로필 저장소가
-없으므로 공개 완료로 표시하지 않는다.
+공개용 내용은 [profile/README.md](../profile/README.md)에 작성되어 있다.
+GitHub 사용자명과 동일한 공개 저장소가 현재 존재하지 않아, 계정 외부 공개
+단계만 남아 있다.
 
 ## 2. DORA JSON 및 주간 보고서
 
@@ -63,6 +62,7 @@ python scripts/analyze_project_metrics.py
 ## 1~3주차 최종 확인 항목
 
 - [x] Profile README 콘텐츠 작성
+- [x] Profile README 공개용 파일 완성
 - [x] DORA JSON·Markdown 생성 및 Artifact 업로드
 - [x] Chart.js 대시보드 구현
 - [x] 분석 스크립트와 예시 실행 결과 작성
@@ -70,3 +70,16 @@ python scripts/analyze_project_metrics.py
 - [ ] 수정된 DORA Workflow 재실행 성공 확인
 - [ ] 실제 Project 이벤트로 Cycle Time·Velocity·Burndown 재계산
 - [ ] Project 화면에서 5개 상태와 Custom Field 최종 확인
+
+## Project 최종 설정 자동화
+
+기존 Project #2를 중복 생성하지 않고 Priority, Story Points, Type 필드를
+보정하는 스크립트를 추가했다.
+
+```powershell
+python scripts/configure_existing_project.py --dry-run
+python scripts/configure_existing_project.py
+Remove-Item Env:GH_TOKEN
+```
+
+GitHub 기본 Status 필드의 옵션명과 순서는 Project 화면에서 확인한다.

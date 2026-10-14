@@ -46,6 +46,8 @@
 - [x] DORA Actions 작성
 - [x] GitHub Project 생성 및 Issue 12개 연결
 - [ ] Project 보드 상태·Custom Field 최종 설정
+- [x] Profile README 공개용 파일 작성
+- [x] Project 필드 보정 스크립트 작성
 
 ## 선택 과제 검증
 

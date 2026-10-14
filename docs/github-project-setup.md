@@ -7,7 +7,9 @@
 - 라벨 생성 완료
 - 마일스톤 2개 생성 완료
 - Issue 12개 생성 및 Project 연결 완료
-- 보드 상태와 Custom Field는 Project 화면에서 최종 확인 필요
+- 기존 Project #2의 Priority·Story Points·Type 필드는
+  `scripts/configure_existing_project.py`로 보정 가능
+- GitHub 기본 Status 필드의 옵션명·순서는 Project 화면에서 최종 확인 필요
 
 ## 상태
 
@@ -77,6 +79,14 @@ metrics/sprint_items.csv
 Copy-Item metrics/project_events.example.csv metrics/project_events.csv
 Copy-Item metrics/sprint_items.example.csv metrics/sprint_items.csv
 python scripts/analyze_project_metrics.py
+```
+
+기존 Project 필드 보정:
+
+```powershell
+python scripts/configure_existing_project.py --dry-run
+python scripts/configure_existing_project.py
+Remove-Item Env:GH_TOKEN
 ```
 
 생성 결과:

@@ -375,3 +375,23 @@ non-fast-forward 충돌이 발생한 것이 원인이었다.
 
 선택 과제의 구현·검증 상태와 남은 항목은
 `docs/optional-assignments.md`에 정리했다.
+
+## 15. 미완료 항목 자동화 보완
+
+사용자가 진행되지 않은 부분을 모두 구현하도록 요청하여 다음을 추가했다.
+
+- `profile/README.md`: GitHub Profile README 공개용 완성 파일
+- `scripts/configure_existing_project.py`: 기존 Project #2를 중복 생성하지
+  않고 Priority, Story Points, Type 필드를 보정하는 idempotent 스크립트
+- DORA Workflow의 `push` 트리거: 수동 실행 없이 코드·문서 Push 시 최근
+  7일 지표를 재수집하며 `metrics/**` 커밋은 재실행하지 않음
+- Profile, Project 필드, 실제 데이터 필요 조건을 선택 과제 문서에 반영
+
+검증 결과:
+
+- 세 Python 스크립트 `py_compile` 통과
+- Project 설정 스크립트 `--dry-run` 통과
+- Git diff 공백 오류 없음
+- Profile 저장소 `kdongyu01/kdongyu01`는 아직 존재하지 않아 공개 Push는
+  수행할 수 없었음
+- 실제 Project 상태 이력과 Profile 저장소 생성은 GitHub 계정 영역에 남음
