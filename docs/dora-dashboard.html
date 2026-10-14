@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DORA Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <main>
+      <h1>DORA Metrics Dashboard</h1>
+      <p id="period">데이터를 불러오는 중입니다.</p>
+      <canvas id="metrics-chart" aria-label="DORA metrics chart"></canvas>
+      <p id="notice">Lead Time은 현재 PR 생성부터 Merge까지의 대리 지표입니다.</p>
+    </main>
+    <script>
+      fetch("../metrics/dora.json")
+        .then((response) => {
+          if (!response.ok) throw new Error("DORA JSON을 불러오지 못했습니다.");
+          return response.json();
+        })
+        .then((data) => {
+          document.querySelector("#period").textContent =
+            `${data.period.start} ~ ${data.period.end}`;
+          new Chart(document.querySelector("#metrics-chart"), {
+            type: "bar",
+            data: {
+              labels: ["Lead Time (h)", "Deployments", "MTTR (h)", "Failure Rate (%)"],
+              datasets: [{
+                label: "이번 주 값",
+                data: [
+                  data.lead_time_hours.average || 0,
+                  data.deployment_frequency.successful_deployments,
+                  data.mttr_hours.average || 0,
+                  data.change_failure_rate.percentage || 0,
+                ],
+                backgroundColor: ["#2563eb", "#16a34a", "#f59e0b", "#dc2626"],
+              }],
+            },
+            options: { responsive: true, scales: { y: { beginAtZero: true } } },
+          });
+        })
+        .catch((error) => {
+          document.querySelector("#period").textContent = error.message;
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+name: Generate DORA weekly report
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 1"
+
+permissions:
+  contents: write
+  issues: read
+  pull-requests: read
+  deployments: read
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate DORA report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python scripts/generate_dora_report.py
+
+      - name: Upload DORA artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dora-weekly-report
+          path: |
+            metrics/dora.json
+            metrics/weekly-report.md
+
+      - name: Commit report files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add metrics/
+          git commit -m "docs: update weekly DORA report" || exit 0
+          git push
