@@ -1,0 +1,26 @@
+{
+  "period": {
+    "start": "2026-10-07",
+    "end": "2026-10-14"
+  },
+  "lead_time_hours": {
+    "average": null,
+    "sample_count": 0,
+    "definition": "Pull Request created_at to merged_at proxy"
+  },
+  "deployment_frequency": {
+    "successful_deployments": 0,
+    "period_days": 7
+  },
+  "mttr_hours": {
+    "average": null,
+    "incident_count": 0,
+    "definition": "incident Issue created_at to closed_at"
+  },
+  "change_failure_rate": {
+    "failed_changes": 0,
+    "total_changes": 0,
+    "percentage": null,
+    "definition": "failed production deployment statuses / all production deployment statuses"
+  }
+}
