@@ -22,6 +22,7 @@
         .then((data) => {
           document.querySelector("#period").textContent =
             `${data.period.start} ~ ${data.period.end}`;
+          const valueOrNull = (value) => value == null ? null : value;
           new Chart(document.querySelector("#metrics-chart"), {
             type: "bar",
             data: {
@@ -29,15 +30,26 @@
               datasets: [{
                 label: "이번 주 값",
                 data: [
-                  data.lead_time_hours.average || 0,
-                  data.deployment_frequency.successful_deployments,
-                  data.mttr_hours.average || 0,
-                  data.change_failure_rate.percentage || 0,
+                  valueOrNull(data.lead_time_hours.average),
+                  valueOrNull(data.deployment_frequency.successful_deployments),
+                  valueOrNull(data.mttr_hours.average),
+                  valueOrNull(data.change_failure_rate.percentage),
                 ],
                 backgroundColor: ["#2563eb", "#16a34a", "#f59e0b", "#dc2626"],
               }],
             },
-            options: { responsive: true, scales: { y: { beginAtZero: true } } },
+            options: {
+              responsive: true,
+              scales: { y: { beginAtZero: true } },
+              plugins: {
+                tooltip: {
+                  callbacks: {
+                    label: (context) =>
+                      context.raw == null ? "측정 데이터 없음" : context.raw,
+                  },
+                },
+              },
+            },
           });
         })
         .catch((error) => {

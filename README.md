@@ -46,3 +46,24 @@
 - [x] DORA Actions 작성
 - [x] GitHub Project 생성 및 Issue 12개 연결
 - [ ] Project 보드 상태·Custom Field 최종 설정
+
+## 주차별 진행 현황
+
+| 주차 | 핵심 과제 | 상태 | 확인 근거 |
+|---|---|---|---|
+| 1주차 | Git/GitHub, 제안서, Profile README | 완료 | SSH Push, PRD, 16주 마일스톤, Profile README 초안 |
+| 2주차 | DORA 수집, 대시보드, JSON·주간 보고서 | 구현 완료·재실행 검증 대기 | Workflow 등록, 첫 실행의 수집·Artifact 성공 |
+| 3주차 | Project, 칸반, Issue, 템플릿, 라벨, 마일스톤 | 핵심 구성 완료 | Project v2, Issue 12개, 템플릿, 라벨, 마일스톤 |
+
+### 선택 과제
+
+- DORA JSON Artifact 및 주간 Markdown 보고서: 구현 완료
+- Cycle Time·Velocity·Burndown: 실제 Project 이벤트 CSV 입력 후 계산 가능한 스크립트 완료
+- Chart.js 대시보드: `docs/dora-dashboard.html` 구현
+
+### 남은 확인
+
+- GitHub Project 화면에서 상태를 `Backlog / To Do / In Progress / Review / Done`으로 확인
+- `Priority / Story Points / Sprint / Type` Custom Field 확인
+- 수정된 DORA Workflow를 `Actions → Run workflow`로 한 번 재실행
+- Profile README 초안을 사용자 프로필 저장소에 공개
