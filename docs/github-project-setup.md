@@ -1,5 +1,14 @@
 # GitHub Project 구성안
 
+실제 Project: [OSS-Defect inspection Sprint Board](https://github.com/users/kdongyu01/projects/2)
+
+현재 자동화 완료 상태:
+
+- 라벨 생성 완료
+- 마일스톤 2개 생성 완료
+- Issue 12개 생성 및 Project 연결 완료
+- 보드 상태와 Custom Field는 Project 화면에서 최종 확인 필요
+
 ## 상태
 
 `Backlog` → `To Do` → `In Progress` → `Review` → `Done`

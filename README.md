@@ -34,6 +34,8 @@
 
 - [제품 요구사항 문서](OSS-Defect-inspection_PRD.md)
 - [GitHub Profile README 초안](github-profile-readme-draft.md)
+- [GitHub Project 보드](https://github.com/users/kdongyu01/projects/2)
+- [GitHub Project 구성안](docs/github-project-setup.md)
 
 ## 현재 상태
 
@@ -42,4 +44,5 @@
 - [x] 협업용 템플릿 초안 추가
 - [x] GitHub 원격 저장소 연결 및 첫 Push
 - [x] DORA Actions 작성
-- [ ] GitHub Project와 Issue 구성
+- [x] GitHub Project 생성 및 Issue 12개 연결
+- [ ] Project 보드 상태·Custom Field 최종 설정
