@@ -5,6 +5,10 @@ on:
   schedule:
     - cron: "0 0 * * 1"
 
+concurrency:
+  group: dora-weekly-report
+  cancel-in-progress: false
+
 permissions:
   contents: write
   issues: read
@@ -42,5 +46,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add metrics/
-          git commit -m "docs: update weekly DORA report" || exit 0
-          git push
+          if git diff --cached --quiet; then
+            echo "No report changes to commit"
+            exit 0
+          fi
+          git commit -m "docs: update weekly DORA report"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
