@@ -1,14 +1,14 @@
 # GitHub Project 구성안
 
-실제 Project: [OSS-Defect inspection Sprint Board](https://github.com/users/kdongyu01/projects/2)
+실제 Project: [OSS-Defect inspection Sprint Board](https://github.com/users/kdongyu01/projects/4)
 
 현재 자동화 완료 상태:
 
 - 라벨 생성 완료
 - 마일스톤 2개 생성 완료
 - Issue 12개 생성 및 Project 연결 완료
-- 기존 Project #2의 Priority·Story Points·Type 필드는
-  `scripts/configure_existing_project.py`로 보정 가능
+- 현재 Project(#4)의 Priority·Story Points·Type 필드는
+  Project 설정 화면에서 확인·보정 가능
 - GitHub 기본 Status 필드의 옵션명·순서는 Project 화면에서 최종 확인 필요
 
 ## 상태
@@ -87,6 +87,8 @@ python scripts/analyze_project_metrics.py
 수동 실행하거나 매주 월요일 스케줄 실행하면 현재 Project 상태가
 `project_events.csv`와 `sprint_items.csv`에 누적되고, 계산 결과가 Artifact와
 커밋으로 저장된다. Workflow 도입 이후의 스냅샷만 실측 이력으로 인정한다.
+기본 대상은 `PROJECT_OWNER=kdongyu01`, `PROJECT_NUMBER=4`이며, 필요하면
+Workflow 환경변수로 다른 Project로 바꿔 실행할 수 있다.
 
 기존 Project 필드 보정:
 
