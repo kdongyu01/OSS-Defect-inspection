@@ -11,8 +11,8 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 API = "https://api.github.com/graphql"
-OWNER = "kdongyu01"
-PROJECT_NUMBER = 2
+DEFAULT_OWNER = "kdongyu01"
+DEFAULT_PROJECT_NUMBER = 4
 METRICS_DIR = Path("metrics")
 EVENTS_PATH = METRICS_DIR / "project_events.csv"
 ITEMS_PATH = METRICS_DIR / "sprint_items.csv"
@@ -57,7 +57,26 @@ def write_rows(path: Path, fields: list[str], rows: list[dict[str, str]]) -> Non
         writer.writerows(rows)
 
 
+def read_project_owner() -> str:
+    return os.environ.get("PROJECT_OWNER", DEFAULT_OWNER)
+
+
+def read_project_number() -> int:
+    value = os.environ.get("PROJECT_NUMBER")
+    if value is None:
+        return DEFAULT_PROJECT_NUMBER
+    try:
+        number = int(value)
+    except ValueError as error:
+        raise SystemExit(f"PROJECT_NUMBER는 숫자여야 합니다. 현재 값: {value!r}") from error
+    if number <= 0:
+        raise SystemExit(f"PROJECT_NUMBER는 1 이상의 숫자여야 합니다. 현재 값: {value!r}")
+    return number
+
+
 def fetch_project() -> list[dict[str, str]]:
+    owner = read_project_owner()
+    project_number = read_project_number()
     query = """
     query($login: String!, $number: Int!) {
       user(login: $login) {
@@ -90,9 +109,9 @@ def fetch_project() -> list[dict[str, str]]:
       }
     }
     """
-    project = graphql(query, {"login": OWNER, "number": PROJECT_NUMBER})["user"]["projectV2"]
+    project = graphql(query, {"login": owner, "number": project_number})["user"]["projectV2"]
     if not project:
-        raise SystemExit(f"Project #{PROJECT_NUMBER}를 찾을 수 없습니다.")
+        raise SystemExit(f"{owner}의 Project #{project_number}를 찾을 수 없습니다.")
     result = []
     for node in project["items"]["nodes"]:
         content = node.get("content") or {}

@@ -78,7 +78,7 @@ Story Points를 주기적으로 스냅샷하고, `scripts/analyze_project_metric
 
 ## Project 최종 설정 자동화
 
-기존 Project #2를 중복 생성하지 않고 Priority, Story Points, Type 필드를
+기존 Project의 Priority, Story Points, Type 필드를
 보정하는 스크립트를 추가했다.
 
 ```powershell

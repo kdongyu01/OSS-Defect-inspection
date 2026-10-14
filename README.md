@@ -34,7 +34,7 @@
 
 - [제품 요구사항 문서](OSS-Defect-inspection_PRD.md)
 - [GitHub Profile README 초안](github-profile-readme-draft.md)
-- [GitHub Project 보드](https://github.com/users/kdongyu01/projects/2)
+- [GitHub Project 보드](https://github.com/users/kdongyu01/projects/4)
 - [GitHub Project 구성안](docs/github-project-setup.md)
 
 ## 현재 상태
