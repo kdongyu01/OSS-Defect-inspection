@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.pytest_cache/
+.mypy_cache/
+.DS_Store
+
+# Local and private data
+data/raw/
+data/private/
+*.local.json
+
+# Build and generated files
+dist/
+build/
+*.egg-info/
