@@ -292,3 +292,32 @@ OSS-Defect inspection/
 | 커밋 | 내용 |
 |---|---|
 | `e5bd911` | DORA API 인증과 수동 실행 안내 보완 |
+
+## 12. 2026-10-15 Actions 실패 분석 및 수정
+
+사용자가 공유한 GitHub Actions 화면에서 최신 재실행이 실패했지만, Job 단계
+확인 결과 `Generate DORA report`와 `Upload DORA artifacts`는 성공하고
+`Commit report files`만 실패했다. 첫 번째 시도가 이미 리포트 커밋을 원격
+`main`에 생성한 뒤, 재실행이 이전 커밋 기준으로 다시 Push하여
+non-fast-forward 충돌이 발생한 것이 원인이었다.
+
+수정 내용:
+
+- 변경사항이 없으면 커밋·Push를 정상 종료
+- 변경사항이 있으면 리포트 커밋 생성
+- `origin/main`을 fetch한 뒤 rebase
+- `git push origin HEAD:main`으로 최신 원격 브랜치에 Push
+- 동시 실행을 막는 Workflow concurrency 그룹 추가
+
+검증 결과:
+
+- 수정 Workflow를 원격 `main`에 Push 완료
+- 원격에 `metrics/dora.json`과 `metrics/weekly-report.md`가 실제 생성됨
+- 로컬 브랜치와 원격 브랜치가 동기화됨
+- 수정 후 새 실행 이력은 아직 없으며, 다음 `Run workflow`에서 재검증 가능
+
+추가 커밋:
+
+| 커밋 | 내용 |
+|---|---|
+| `1c505af` | DORA 리포트 재실행 시 원격 충돌 방지 |
