@@ -40,6 +40,6 @@
 - [x] 로컬 Git 저장소 초기화
 - [x] 프로젝트 제안서 작성
 - [x] 협업용 템플릿 초안 추가
-- [ ] GitHub 원격 저장소 연결 및 첫 Push
-- [ ] DORA Actions 작성
+- [x] GitHub 원격 저장소 연결 및 첫 Push 준비
+- [x] DORA Actions 작성
 - [ ] GitHub Project와 Issue 구성
