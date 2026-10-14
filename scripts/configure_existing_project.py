@@ -26,7 +26,7 @@ def graphql(query: str, variables: dict) -> dict:
         data=json.dumps({"query": query, "variables": variables}).encode(),
         headers={
             "Accept": "application/vnd.github+json",
-            "Authorization": f"Bearer {token}",
+        "Authorization": "Bearer " + token,
             "Content-Type": "application/json",
             "X-GitHub-Api-Version": "2022-11-28",
         },

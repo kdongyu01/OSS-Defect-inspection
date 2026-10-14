@@ -58,7 +58,7 @@ def request(path: str, method: str = "GET", payload: dict | None = None) -> dict
     body = json.dumps(payload).encode("utf-8") if payload is not None else None
     headers = {
         "Accept": "application/vnd.github+json",
-        "Authorization": f"Bearer {token}",
+        "Authorization": "Bearer " + token,
         "Content-Type": "application/json",
         "X-GitHub-Api-Version": "2022-11-28",
     }

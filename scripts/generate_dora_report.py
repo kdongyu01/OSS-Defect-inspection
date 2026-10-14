@@ -32,7 +32,7 @@ def request_json(path: str) -> list | dict:
         f"{API_ROOT}/repos/{repository}/{path}",
         headers={
             "Accept": "application/vnd.github+json",
-            "Authorization": f"Bearer {token}",
+        "Authorization": "Bearer " + token,
             "X-GitHub-Api-Version": "2022-11-28",
         },
     )
