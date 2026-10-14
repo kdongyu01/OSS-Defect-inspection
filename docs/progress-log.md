@@ -269,3 +269,26 @@ OSS-Defect inspection/
 - Profile README 초안은 사용자 GitHub 프로필 저장소에 별도로 Push해야 공개된다.
 - GitHub Project의 상태 컬럼과 Custom Field는 GitHub 화면에서 최종 확인해야 한다.
 - 토큰이 노출된 경우 즉시 Revoke하고 새 토큰을 발급해야 한다.
+
+## 11. 2026-10-15 후속 실행
+
+계획을 이어서 실행하는 과정에서 DORA 수집 스크립트를 점검했다. 기존
+인증 헤더가 API 토큰을 실제로 전달하지 않는 상태였으므로, 다음을 수정했다.
+
+- `GH_TOKEN`과 `GITHUB_REPOSITORY`가 없을 때 명시적인 오류를 출력
+- GitHub REST API 요청에 환경변수 토큰을 Bearer 인증으로 전달
+- DORA Workflow 수동 실행 방법과 데이터가 없는 경우의 `0`·`null` 의미를 문서화
+
+검증 결과:
+
+- Python 파일 문법 오류 없음
+- Git diff 공백 오류 없음
+- GitHub Actions Workflow가 `active` 상태로 등록됨
+- 현재 Workflow 실행 이력은 0건
+- 실제 Artifact 검증을 위해 GitHub Actions 화면에서 수동 실행 필요
+
+추가 커밋:
+
+| 커밋 | 내용 |
+|---|---|
+| `e5bd911` | DORA API 인증과 수동 실행 안내 보완 |
