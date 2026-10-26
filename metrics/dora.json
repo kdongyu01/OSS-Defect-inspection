@@ -1,11 +1,11 @@
 {
   "period": {
-    "start": "2026-10-12",
-    "end": "2026-10-19"
+    "start": "2026-10-19",
+    "end": "2026-10-26"
   },
   "lead_time_hours": {
-    "average": 0.13,
-    "sample_count": 1,
+    "average": null,
+    "sample_count": 0,
     "definition": "Pull Request created_at to merged_at proxy"
   },
   "deployment_frequency": {

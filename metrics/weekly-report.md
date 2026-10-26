@@ -1,10 +1,10 @@
 # DORA Weekly Report
 
-기간: 2026-10-12 ~ 2026-10-19
+기간: 2026-10-19 ~ 2026-10-26
 
 | 지표 | 결과 |
 |---|---:|
-| Lead Time | 0.13 hours |
+| Lead Time | None hours |
 | Deployment Frequency | 0 successful deployments |
 | MTTR | None hours |
 | Change Failure Rate | None% |
